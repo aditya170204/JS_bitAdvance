@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body style="background-color: grey;">
+  <div>
+    <h2>Lexical Scoping and closure</h2>
+    <button id="orange">Orange</button>
+    <button id="yellow">Yellow</button>
+  </div>
+  
+</body>
+<script>
+  function outer() {
+  let userName = "Aditya";
+  console.log(userName);
+
+  function inner() {
+    const bottle = "1 ltr";
+    console.log(bottle, userName);
+    console.log(buds);
+  }
+  function insider() {
+    const buds = "oppo";
+    console.log(buds, userName);
+    console.log(bottle);
+  }
+  inner();
+  insider();
+}
+outer();
+
+
+function makeFunc(){
+  const name ="Mozilla"
+  function displayName(){
+    console.log(name)
+  }
+  return displayName
+}
+const myfunc = makeFunc()
+myfunc()
+</script>
+<script>
+      // document.getElementById("orange").onclick=function(){
+      //   document.body.style.backgroundColor=`orange`
+      // }
+      // document.getElementById("yellow").onclick=function(){
+      //   document.body.style.backgroundColor=`yellow`
+      // }
+      function clickHandler(color){
+        // document.body.style.backgroundColor=`${color}`
+        return function(){
+          document.body.style.backgroundColor=`${color}`
+        }
+      }
+      document.getElementById("orange").onclick=clickHandler("orange")
+      document.getElementById("yellow").onclick=clickHandler("yellow")
+</script>
+</html>
